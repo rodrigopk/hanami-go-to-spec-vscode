@@ -3,7 +3,7 @@
 	"displayName": "HanamiGoToSpec",
 	"description": "Switch between code and spec in Hanami projects",
 	"publisher": "rodrigopk",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"homepage": "https://github.com/rodrigopk/hanami-go-to-spec-vscode#readme",
 	"engines": {
 		"vscode": "^1.51.0"
