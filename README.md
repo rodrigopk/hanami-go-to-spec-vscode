@@ -1,6 +1,7 @@
 # Hanami Go to Spec extension for VSCODE
 
 Jump between code and spec in Hanami projects.
+Based on the [Rails Go To spec](https://github.com/sporto/rails-go-to-spec-vscode) extension
 
 ## Default keybinding:
 
