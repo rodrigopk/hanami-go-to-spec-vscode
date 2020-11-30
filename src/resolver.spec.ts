@@ -1,5 +1,3 @@
-import test from 'ava';
-
 import * as resolver from './resolver';
 
 const testCases = [
@@ -21,36 +19,36 @@ const testCases = [
   },
 ];
 
-test('isSpec', (test) => {
-  test.plan(testCases.length * 2);
-  
+describe('isSpec', () => {
   testCases.forEach((testCase) => {
-    test.is(resolver.isSpec(testCase.specFile), true);
-    test.is(resolver.isSpec(testCase.codeFile), false);
+    it('returns if is spec', () => {
+      expect(resolver.isSpec(testCase.specFile)).toBeTruthy();
+      expect(resolver.isSpec(testCase.codeFile)).toBeFalsy();
+    });    
   });
 });
 
-test('specToCode', (test) => {
-  test.plan(testCases.length);
-
+describe('specToCode', () => {
   testCases.forEach((testCase) => {
-    test.is(resolver.specToCode(testCase.specFile), testCase.codeFile);
+    it ('gets the spec file for the code', () => {
+      expect(resolver.specToCode(testCase.specFile)).toEqual(testCase.codeFile);
+    });
   });
 });
 
-test('codeToSpec', (test) => {
-  test.plan(testCases.length);
-
+describe('codeToSpec', () => {
   testCases.forEach((testCase) => {
-    test.is(resolver.codeToSpec(testCase.codeFile), testCase.specFile);
+    it('gets the spec file for the code', () => {
+      expect(resolver.codeToSpec(testCase.codeFile)).toEqual(testCase.specFile);
+    });
   });
 });
 
-test('getRelated', (test) => {
-  test.plan(testCases.length * 2);
-
+describe('getRelated', () => {
   testCases.forEach((testCase) => {
-    test.is(resolver.getRelated(testCase.codeFile), testCase.specFile);
-    test.is(resolver.getRelated(testCase.specFile), testCase.codeFile);
+    it('gets the correct related file', () => {
+      expect(resolver.getRelated(testCase.codeFile)).toEqual(testCase.specFile);
+      expect(resolver.getRelated(testCase.specFile)).toEqual(testCase.codeFile);
+    });
   });
 });
