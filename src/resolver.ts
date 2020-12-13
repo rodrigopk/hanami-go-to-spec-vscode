@@ -1,6 +1,6 @@
-export const getRelated = (file: string) => {
+export const getRelated = (file: string, appsList: string[]) => {
   if (isSpec(file)) {
-    return specToCode(file);
+    return specToCode(file, appsList);
   } else {
     return codeToSpec(file);
   }
@@ -10,24 +10,31 @@ export const isSpec = (file: string) => {
   return file.indexOf('_spec.rb') > -1;
 };
 
-export const specToCode = (specFile: string) => {
-  const file = specFile.replace('_spec.rb', '.rb');
+const getProjectNameFromSpec = (specFile: string) => {
+  const substring = specFile.replace('spec/', '');
 
-  const isLibFile = file.indexOf('/spec/lib/') > -1;
-  if (isLibFile) {
-    return file.replace('/spec/lib/', '/lib/');
+  return substring.substring(0, substring.indexOf('/'));
+};
+
+export const specToCode = (specFile: string, appsList: string[]) => {
+  const file = specFile.replace('_spec.rb', '.rb');
+  const projectName = getProjectNameFromSpec(specFile);
+
+  const isAppFile = appsList.includes(projectName);
+  if (isAppFile) {
+    return file.replace('spec/', 'apps/');
   }
 
-  return file.replace('/spec/', '/apps/');
+  return file.replace('spec/', 'lib/');
 };
 
 export const codeToSpec = (codeFile: string) => {
   const file = codeFile.replace('.rb', '_spec.rb');
 
-  const isLibFile = file.indexOf('/lib/') > -1;
+  const isLibFile = file.indexOf('lib/') > -1;
   if (isLibFile) {
-    return file.replace('/lib/', '/spec/lib/');
+    return file.replace('lib/', 'spec/');
   }
 
-  return file.replace('/apps/', '/spec/');
+  return file.replace('apps/', 'spec/');
 };

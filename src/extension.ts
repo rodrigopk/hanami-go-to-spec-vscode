@@ -42,21 +42,23 @@ export const activate = (context: vscode.ExtensionContext) => {
       }
 
       const document = editor.document;
+      const appsList = fs.readdirSync(vscode.workspace.rootPath + '/apps');
       const fileName: string = document.fileName;
-      const related: string = resolver.getRelated(fileName);
-      const relative: string = vscode.workspace.asRelativePath(related);
-      const fileExists: boolean = fs.existsSync(related);
-      const dirname: string = path.dirname(related);
+      const relativeFileName = vscode.workspace.asRelativePath(fileName);
 
-      //console.log('fileExists', fileExists);
+      const related: string = resolver.getRelated(relativeFileName, appsList);
+      const absolute: string = vscode.workspace.rootPath + '/' + related;
+
+      const fileExists: boolean = fs.existsSync(absolute);
+      const dirname: string = path.dirname(absolute);
 
       if (fileExists) {
-        openFile(related);
+        openFile(absolute);
       } else {
-        prompt(relative, function () {
+        prompt(related, function () {
           mkdirp.sync(dirname);
-          fs.closeSync(fs.openSync(related, 'w'));
-          openFile(related);
+          fs.closeSync(fs.openSync(absolute, 'w'));
+          openFile(absolute);
         });
       }
     },

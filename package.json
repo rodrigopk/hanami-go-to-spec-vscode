@@ -1,79 +1,79 @@
 {
-	"name": "hanami-go-to-spec",
-	"displayName": "HanamiGoToSpec",
-	"description": "Switch between code and spec in Hanami projects",
-	"publisher": "rodrigopk",
-	"version": "0.0.2",
-	"homepage": "https://github.com/rodrigopk/hanami-go-to-spec-vscode#readme",
-	"engines": {
-		"vscode": "^1.51.0"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/rodrigopk/hanami-go-to-spec-vscode.git"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onCommand:extension.hanamiGoToSpec"
-	],
-	"main": "./dist/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "extension.hanamiGoToSpec",
-				"title": "Hanami Go to Spec"
-			}
-		],
-		"keybindings": [
-			{
-				"command": "extension.hanamiGoToSpec",
-				"key": "ctrl+shift+y",
-				"mac": "cmd+shift+y",
-				"when": "editorTextFocus"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "yarn run package",
-		"compile": "webpack --devtool nosources-source-map --config ./build/node-extension.webpack.config.js",
-		"watch": "webpack --watch --devtool nosources-source-map --info-verbosity verbose --config ./build/node-extension.webpack.config.js",
-		"package": "webpack --mode production --config ./build/node-extension.webpack.config.js",
-		"lint": "eslint src --ext ts",
-		"test": "jest"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.1.3",
-		"@types/mkdirp": "^1.0.1",
-		"@types/mocha": "^8.0.0",
-		"@types/node": "^12.11.7",
-		"@types/vscode": "^1.51.0",
-		"@typescript-eslint/eslint-plugin": "^4.1.1",
-		"@typescript-eslint/parser": "^4.1.1",
-		"eslint": "^7.9.0",
-		"glob": "^7.1.6",
-		"jest": "^26.6.3",
-		"ts-jest": "^26.4.4",
-		"mocha": "^8.1.3",
-		"ts-loader": "^8.0.3",
-		"typescript": "^4.0.2",
-		"vscode-test": "^1.4.0",
-		"webpack": "^4.44.1",
-		"webpack-cli": "^3.3.12"
-	},
-	"jest": {
-		"moduleFileExtensions": [
-			"js",
-			"json",
-			"ts"
-		],
-		"rootDir": ".",
-		"testRegex": ".spec.ts$",
-		"transform": {
-			"^.+\\.(t|j)s$": "ts-jest"
-		},
-		"coverageDirectory": "./coverage",
-		"testEnvironment": "node"
-	}
+  "name": "hanami-go-to-spec",
+  "displayName": "HanamiGoToSpec",
+  "description": "Switch between code and spec in Hanami projects",
+  "publisher": "rodrigopk",
+  "version": "0.0.3",
+  "homepage": "https://github.com/rodrigopk/hanami-go-to-spec-vscode#readme",
+  "engines": {
+    "vscode": "^1.51.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rodrigopk/hanami-go-to-spec-vscode.git"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.hanamiGoToSpec"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.hanamiGoToSpec",
+        "title": "Hanami Go to Spec"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.hanamiGoToSpec",
+        "key": "ctrl+shift+y",
+        "mac": "cmd+shift+y",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack --devtool nosources-source-map --config ./build/node-extension.webpack.config.js",
+    "watch": "webpack --watch --devtool nosources-source-map --info-verbosity verbose --config ./build/node-extension.webpack.config.js",
+    "package": "webpack --mode production --config ./build/node-extension.webpack.config.js",
+    "lint": "eslint src --ext ts",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mkdirp": "^1.0.1",
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.51.0",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "eslint": "^7.9.0",
+    "glob": "^7.1.6",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4",
+    "mocha": "^8.1.3",
+    "ts-loader": "^8.0.3",
+    "typescript": "^4.0.2",
+    "vscode-test": "^1.4.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": ".",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "./coverage",
+    "testEnvironment": "node"
+  }
 }
